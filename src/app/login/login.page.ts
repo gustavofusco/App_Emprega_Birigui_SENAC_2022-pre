@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -12,24 +11,23 @@ export class LoginPage implements OnInit {
 
   candidato = {cpf : '' , senha : ''};
 
-  constructor( public route : Router, public menuLeft: MenuController )
+  constructor( public nav: NavController, public menuLeft: MenuController )
   { 
     this.menuLeft.enable(false);
   }
 
   confirmarLogin(){
-    this.route.navigate(['home']);
+    this.nav.navigateRoot('home')
   }
 
   cadastro(){
-    this.route.navigate(['usuario']);
+    this.nav.navigateForward('cadastro')
   }
 
   recuperacao(){
-    this.route.navigate(['recuperacao']);
+    this.nav.navigateForward('recuperacao')
   }
-
-
+  
   ngOnInit() {
   }
 }
